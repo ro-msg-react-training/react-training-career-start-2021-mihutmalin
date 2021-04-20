@@ -1,6 +1,8 @@
 import React from 'react';
 import {TableRowProduct} from './TableRowProduct';
-import '../styles/TableProductsStyle.css';
+import { tableProductsStyle } from '../styles/TableProductsStyle';
+import { ThemeProvider } from '@material-ui/styles';
+import { standardTheme } from '../themes/StandardTheme';
 
 var products=[ 
     {
@@ -39,25 +41,31 @@ interface Props {
 }
 
 export const TableProducts = (props: any) => {
+    const style = tableProductsStyle(); 
+
     const tableItems = products.map((product) =>
     <TableRowProduct key={product.id.toString()} 
-    id={product.id} 
-    category = {product.category}
-    name={product.name}
-    price = {product.price}/>
+      id={product.id} 
+      category = {product.category}
+      name={product.name}
+      price = {product.price}
+    />
     );
+
     return (
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>CATEGORY</th>
-                <th>NAME</th>
-                <th>PRICE</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>{tableItems}</tbody>
-    </table>
+    <ThemeProvider theme={standardTheme}>
+      <table className={style.tableStyle}>
+          <thead>
+              <tr className={style.trStyle}>
+                  <th className={style.thStyle}>ID</th>
+                  <th className={style.thStyle}>CATEGORY</th>
+                  <th className={style.thStyle}>NAME</th>
+                  <th className={style.thStyle}>PRICE</th>
+                  <th className={style.thStyle}></th>
+              </tr>
+          </thead>
+          <tbody>{tableItems}</tbody>
+      </table>
+    </ThemeProvider>
     );
 };
