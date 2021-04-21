@@ -12,6 +12,6 @@ export const standardTheme = createMuiTheme({
   },
   typography: {
     fontFamily: '"OpenSans", bold',
-    fontSize: 12,
+    fontSize: 20,
   }
 });
