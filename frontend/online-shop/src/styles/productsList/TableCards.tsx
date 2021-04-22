@@ -1,17 +1,18 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
 
-export const useStyle = makeStyles( (theme: Theme) => createStyles({
+export const useStyle = makeStyles((theme: Theme) =>
+  createStyles({
     root: {
-        margin:'1%',
-        overflow: 'hidden'
+      margin: "1%",
+      overflow: "hidden",
     },
-    gridList: {
-    },
+    gridList: {},
     tile: {
-        transition: 'transform .2s',
-        filter: 'grayscale(50%)',
-        '&:hover': {
-            filter: 'none',
-        },
-    }
-}));
+      transition: "transform .2s",
+      filter: "grayscale(50%)",
+      "&:hover": {
+        filter: "none",
+      },
+    },
+  })
+);
