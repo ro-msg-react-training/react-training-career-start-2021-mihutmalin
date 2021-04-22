@@ -10,6 +10,10 @@ import img2 from '../../resources/2.jpg';
 import img3 from '../../resources/3.jpg';
 import img4 from '../../resources/4.jpg';
 import img5 from '../../resources/5.jpg';
+import React from 'react';
+import { Grid } from '@material-ui/core';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const products= [ 
   {
@@ -62,8 +66,28 @@ const products= [
 export const TableCards = (props: any) => {
   const style = useStyle(); 
 
+  const [width, setWidth] = useState(window.innerWidth);
+  const [columns, setColumns] = useState(4);
+
+  useEffect(() => {
+    setWidth(window.innerWidth)
+  },[]);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+    setColumns(width < 700 ? 1 : (width >= 700 && width <1100 ? 2:3))
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
+
   const tableItems = products.map(product =>
-    <GridListTile key={product.id.toString()} className={style.tile}>
+    
+    <GridListTile key={product.id.toString()}  className={style.tile}>
       <img src={product.imgUrl} alt={product.name} />
       <DescriptionCard 
         id={product.id} 
@@ -78,12 +102,10 @@ export const TableCards = (props: any) => {
   );
 
   return (
-    <ThemeProvider theme={standardTheme}>
-      <div className={style.root}>
-        <GridList cellHeight={300} className={style.gridList}>
+    <Grid item xs={12} className={style.root}>
+        <GridList cols={columns} cellHeight={300} spacing={20} className={style.gridList}>
           {tableItems}
         </GridList>
-      </div>
-    </ThemeProvider>
+    </Grid>
   );
 }
