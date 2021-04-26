@@ -3,18 +3,13 @@ import { useStyle } from "../../styles/productsList/DescriptionCardStyle";
 import { ThemeProvider } from "@material-ui/styles";
 import { standardTheme } from "../../themes/StandardTheme";
 import { Link } from "react-router-dom";
+import { Product } from "../../interfaces/ProductInterface";
 
-export interface Product {
-  id: bigint;
-  name: string;
-  price: number;
-  weight: number;
-  category: string;
-  supplier: string;
-  imgUrl: string;
+interface DescriptionCardProps {
+  product: Product;
 }
 
-export const DescriptionCard = (props: Product) => {
+export const DescriptionCard = (props: DescriptionCardProps) => {
   const style = useStyle();
 
   return (
@@ -22,13 +17,16 @@ export const DescriptionCard = (props: Product) => {
       <GridListTileBar
         title={
           <span>
-            {props.name} ${props.price}
+            {props.product.name} ${props.product.price}
           </span>
         }
-        subtitle={<span>{props.category}</span>}
+        subtitle={<span>{props.product.category}</span>}
         actionIcon={
           <Link
-            to={{ pathname: `/product/${props.id}`, state: { product: props } }}
+            to={{
+              pathname: `/product/${props.product.id}`,
+              state: { product: props.product },
+            }}
           >
             <Button className={style.buttonStyle}>Details</Button>
           </Link>

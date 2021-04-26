@@ -8,10 +8,16 @@ export const useStyle = makeStyles((theme: Theme) =>
     info: {
       width: "100%",
     },
+    link: {
+      color: "black",
+    },
+    imgContainer: {
+      height: "90vh",
+    },
     img: {
-      objectFit: "cover",
-      maxWidth: "50%",
-      maxHeight: "100vh",
+      maxWidth: "100%",
+      height: "75vh",
+      display: "block",
     },
     grid: {
       backgroundColor: theme.palette.primary.dark,
@@ -21,13 +27,18 @@ export const useStyle = makeStyles((theme: Theme) =>
       fontSize: "25px",
       margin: "0 auto",
       textAlign: "center",
-      lineHeight: "16.666vh",
+      height: "15vh",
+      lineHeight: "15vh",
     },
     button: {
       backgroundColor: theme.palette.primary.main,
     },
     buttonIcon: {
       color: theme.palette.primary.light,
+    },
+    deleteButton: {
+      backgroundColor: "red",
+      color: "white",
     },
   })
 );

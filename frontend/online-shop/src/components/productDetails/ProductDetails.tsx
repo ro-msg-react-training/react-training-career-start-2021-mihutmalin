@@ -1,13 +1,23 @@
 import { useStyle } from "../../styles/productDetails/ProductDetailsStyle";
-import { Grid, IconButton } from "@material-ui/core";
+import { Button, Grid, IconButton } from "@material-ui/core";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import React from "react";
+import { Link } from "react-router-dom";
+import { deleteProduct } from "../../services/ProductService";
+
+interface ProductDetailsProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
 
 export const ProductDetails = (props: any) => {
   const style = useStyle();
 
   const { number } = props.match.params;
   const { product } = props.location.state;
+
+  const onButtonDelete = () => (event: React.MouseEvent<unknown>) => {
+    deleteProduct(number);
+  };
 
   return (
     <Grid container className={style.root}>
@@ -46,8 +56,19 @@ export const ProductDetails = (props: any) => {
           <Grid item xs={3}></Grid>
         </Grid>
       </Grid>
-      <Grid className={style.img} item xs={6}>
-        <img src={product.imgUrl} alt={product.name} />
+      <Grid item xs={6} className={style.imgContainer}>
+        <Grid>
+          <img src={product.imgUrl} alt={product.name} className={style.img} />
+        </Grid>
+        <Grid className={style.grid}>
+          <div className={style.div}>
+            <Link to="/products" className={style.link}>
+              <Button className={style.deleteButton} onClick={onButtonDelete()}>
+                Delete
+              </Button>
+            </Link>
+          </div>
+        </Grid>
       </Grid>
     </Grid>
   );
