@@ -40,5 +40,9 @@ export const useStyle = makeStyles((theme: Theme) =>
       backgroundColor: "red",
       color: "white",
     },
+    updateButton: {
+      backgroundColor: "white",
+      color: "black",
+    },
   })
 );

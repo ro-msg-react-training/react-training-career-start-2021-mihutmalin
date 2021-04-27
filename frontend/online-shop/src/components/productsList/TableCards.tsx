@@ -30,10 +30,9 @@ export const TableCards = (props: TableCardsProps) => {
     setWidth(window.innerWidth);
     dispatch(getAllProductsRequest());
   }, []);
-  console.log(store.getState().products);
 
   //CONSOLE LOG
-  console.log(props);
+  console.log(store.getState());
 
   useEffect(() => {
     function handleResize() {
@@ -48,8 +47,8 @@ export const TableCards = (props: TableCardsProps) => {
   }, [width]);
 
   let tableItems: {} | null | undefined = [];
-  if (props.products != undefined) {
-    tableItems = props.products.map((product: Product) => (
+  if (store.getState().products != undefined) {
+    tableItems = store.getState().products.map((product: Product) => (
       <GridListTile key={product.id.toString()} className={style.tile}>
         <img src={product.imageUrl} alt={product.name} />
         <DescriptionCard product={product} />
@@ -71,19 +70,18 @@ export const TableCards = (props: TableCardsProps) => {
   );
 };
 
-const mapStateToProps = (state: AppState) => ({
-  products: state.products.products,
-});
+function mapStateToProps(state: AppState) {
+  return {
+    products: state.products.products,
+  };
+}
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  getAllProd: () => dispatch(getAllProductsRequest()),
-  getAllProdSuccess: (products: Product[]) =>
-    dispatch(getAllProductsSuccess(products)),
-});
-/*
-export default connect(mapStateToProps, {
-  getAllProductsRequest,
-  getAllProductsSuccess,
-})(TableCards);
-*/
-export default TableCards;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    getAllProd: () => dispatch(getAllProductsRequest()),
+    getAllProdSuccess: (products: Product[]) =>
+      dispatch(getAllProductsSuccess(products)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableCards);

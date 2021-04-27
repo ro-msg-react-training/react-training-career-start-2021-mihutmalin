@@ -14,8 +14,10 @@ import React from "react";
 import { NavBar } from "./components/navbar/NavBar";
 import { Provider } from "react-redux";
 import { store } from "./store/Store";
+import { NotFound } from "./components/notFound/NotFound";
 
 export const App = () => {
+  console.log(store.getState());
   return (
     <ThemeProvider theme={standardTheme}>
       <CssBaseline>
@@ -28,6 +30,7 @@ export const App = () => {
                 <Redirect to="/products" />
               </Route>
               <Route path="/products" component={TableCards}></Route>
+              <Route path="/*" component={NotFound}></Route>
             </Switch>
           </Router>
         </Provider>

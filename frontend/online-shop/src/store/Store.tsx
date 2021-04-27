@@ -21,9 +21,10 @@ export const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-console.log(store.getState());
-
 sagaMiddleware.run(watchGetAllProductsAsync);
+
+console.log("daaaaaaaaaaaaaaaaaaaaa");
+console.log(store.getState());
 
 export interface AppState {
   products: TableCardsState;

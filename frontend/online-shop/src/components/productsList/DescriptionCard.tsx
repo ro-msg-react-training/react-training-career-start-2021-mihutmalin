@@ -13,25 +13,23 @@ export const DescriptionCard = (props: DescriptionCardProps) => {
   const style = useStyle();
 
   return (
-    <ThemeProvider theme={standardTheme}>
-      <GridListTileBar
-        title={
-          <span>
-            {props.product.name} ${props.product.price}
-          </span>
-        }
-        subtitle={<span>{props.product.category}</span>}
-        actionIcon={
-          <Link
-            to={{
-              pathname: `/product/${props.product.id}`,
-              state: { product: props.product },
-            }}
-          >
-            <Button className={style.buttonStyle}>Details</Button>
-          </Link>
-        }
-      />
-    </ThemeProvider>
+    <GridListTileBar
+      title={
+        <span>
+          {props.product.name} ${props.product.price}
+        </span>
+      }
+      subtitle={<span>{props.product.productCategory.name}</span>}
+      actionIcon={
+        <Link
+          to={{
+            pathname: `/product/${props.product.id}`,
+            state: { product: props.product },
+          }}
+        >
+          <Button className={style.buttonStyle}>Details</Button>
+        </Link>
+      }
+    />
   );
 };
