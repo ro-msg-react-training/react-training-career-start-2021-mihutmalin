@@ -27,7 +27,7 @@ export const NavBar = (props: any) => {
             </Link>
           </Grid>
           <Grid item xs={6}>
-            <Link to="/products" className={style.link}>
+            <Link to="/cart" className={style.link}>
               <Button color="inherit" className={style.buttonCart}>
                 cart
               </Button>

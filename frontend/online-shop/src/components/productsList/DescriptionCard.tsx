@@ -24,7 +24,6 @@ export const DescriptionCard = (props: DescriptionCardProps) => {
         <Link
           to={{
             pathname: `/product/${props.product.id}`,
-            state: { product: props.product },
           }}
         >
           <Button className={style.buttonStyle}>Details</Button>

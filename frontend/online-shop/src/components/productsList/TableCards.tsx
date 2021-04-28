@@ -2,7 +2,7 @@ import { DescriptionCard } from "./DescriptionCard";
 import { useStyle } from "../../styles/productsList/TableCards";
 import { GridList, GridListTile } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Product } from "../../interfaces/ProductInterface";
@@ -30,6 +30,8 @@ export const TableCards = (props: TableCardsProps) => {
     setWidth(window.innerWidth);
     dispatch(getAllProductsRequest());
   }, []);
+
+  useEffect(() => {}, [store.getState().products]);
 
   //CONSOLE LOG
   console.log(store.getState());

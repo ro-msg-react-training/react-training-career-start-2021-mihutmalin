@@ -1,21 +1,8 @@
 import axios from "axios";
-/*
-export const getAllProducts = () => {
-  axios
-    .get("http://localhost:8080/products", {
-      auth: {
-        username: "ovidiududa",
-        password: "12345",
-      },
-    })
-    .then((result) => {
-      return result.data;
-    });
-};
-*/
+import { Product } from "../interfaces/ProductInterface";
 
 export const getAllProducts = async () => {
-  const result = await axios
+  const result: Product[] = await axios
     .get("http://localhost:8080/products", {
       auth: {
         username: "ovidiududa",
@@ -29,7 +16,7 @@ export const getAllProducts = async () => {
   return result;
 };
 
-export const getProduct = async (id: any) => {
+export const getProductById = async (id: number) => {
   const result = await axios.get("http://localhost:8080/products/" + id, {
     auth: {
       username: "ovidiududa",
@@ -40,7 +27,22 @@ export const getProduct = async (id: any) => {
   return result;
 };
 
-export const deleteProduct = async (id: any) => {
+export const updateProductById = async (id: number, product: Product) => {
+  const result = await axios.put(
+    "http://localhost:8080/products/" + id,
+    product,
+    {
+      auth: {
+        username: "ovidiududa",
+        password: "12345",
+      },
+    }
+  );
+
+  return result;
+};
+
+export const deleteProduct = async (id: number) => {
   const result = await axios.delete("http://localhost:8080/products/" + id, {
     auth: {
       username: "ovidiududa",

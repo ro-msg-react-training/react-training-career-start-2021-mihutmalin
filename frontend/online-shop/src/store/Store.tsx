@@ -5,6 +5,7 @@ import {
   TableCardsState,
 } from "../reducers/TableCardsReducer";
 import { watchGetAllProductsAsync } from ".././sagas/TableCardsSaga";
+import { Product } from "../interfaces/ProductInterface";
 
 declare global {
   interface Window {
@@ -28,4 +29,5 @@ console.log(store.getState());
 
 export interface AppState {
   products: TableCardsState;
+  cart: Product[];
 }

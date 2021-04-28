@@ -15,6 +15,7 @@ import { NavBar } from "./components/navbar/NavBar";
 import { Provider } from "react-redux";
 import { store } from "./store/Store";
 import { NotFound } from "./components/notFound/NotFound";
+import { Cart } from "./components/cart/Cart";
 
 export const App = () => {
   console.log(store.getState());
@@ -30,6 +31,7 @@ export const App = () => {
                 <Redirect to="/products" />
               </Route>
               <Route path="/products" component={TableCards}></Route>
+              <Route path="/cart" component={Cart}></Route>
               <Route path="/*" component={NotFound}></Route>
             </Switch>
           </Router>
