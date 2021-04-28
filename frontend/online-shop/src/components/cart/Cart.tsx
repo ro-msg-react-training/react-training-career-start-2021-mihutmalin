@@ -1,5 +1,7 @@
 import { Button } from "@material-ui/core";
 import React from "react";
+import { Product } from "../../model/ProductInterface";
+import { store } from "../../store/Store";
 import { useStyle } from "../../styles/cart/CartStyle";
 
 interface CartProps {
@@ -11,24 +13,18 @@ export const Cart = (props: CartProps) => {
 
   const onButtonUpdate = () => (event: React.MouseEvent<unknown>) => {};
 
+  const tableItems = store.getState().cart.cart.map((product: Product) => (
+    <tr key={product.id.toString()}>
+      <td className={style.td}>{product.name}</td>
+      <td className={style.td}>{product.productCategory.name}</td>
+      <td className={style.td}>{`$ ${product.price}`}</td>
+    </tr>
+  ));
+
   return (
     <div className={style.root}>
       <table className={style.table}>
-        <tr>
-          <th className={style.th}>Name</th>
-          <th className={style.th}>Category</th>
-          <th className={style.th}>Price</th>
-        </tr>
-        <tr>
-          <td className={style.td}>Jill</td>
-          <td className={style.td}>Smith</td>
-          <td className={style.td}>50</td>
-        </tr>
-        <tr>
-          <td className={style.td}>Eve</td>
-          <td className={style.td}>Jackson</td>
-          <td className={style.td}>94</td>
-        </tr>
+        <tbody>{tableItems}</tbody>
       </table>
       <div className={style.divCheckout}>
         <Button className={style.buttonCheckout} onClick={onButtonUpdate()}>

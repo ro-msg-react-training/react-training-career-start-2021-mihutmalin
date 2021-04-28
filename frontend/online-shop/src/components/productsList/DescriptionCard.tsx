@@ -3,7 +3,7 @@ import { useStyle } from "../../styles/productsList/DescriptionCardStyle";
 import { ThemeProvider } from "@material-ui/styles";
 import { standardTheme } from "../../themes/StandardTheme";
 import { Link } from "react-router-dom";
-import { Product } from "../../interfaces/ProductInterface";
+import { Product } from "../../model/ProductInterface";
 
 interface DescriptionCardProps {
   product: Product;

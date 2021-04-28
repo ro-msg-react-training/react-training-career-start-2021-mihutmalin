@@ -1,11 +1,9 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
-import {
-  TableCardsReducer,
-  TableCardsState,
-} from "../reducers/TableCardsReducer";
-import { watchGetAllProductsAsync } from ".././sagas/TableCardsSaga";
-import { Product } from "../interfaces/ProductInterface";
+import { TableCardsState } from "../reducers/TableCardsReducer";
+import RootReducer from "../reducers/RootReducer";
+import { CartState } from "../reducers/CartReducer";
+import RootSaga from "../sagas/RootSaga";
 
 declare global {
   interface Window {
@@ -18,16 +16,13 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
-  TableCardsReducer,
+  RootReducer,
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(watchGetAllProductsAsync);
-
-console.log("daaaaaaaaaaaaaaaaaaaaa");
-console.log(store.getState());
+sagaMiddleware.run(RootSaga);
 
 export interface AppState {
   products: TableCardsState;
-  cart: Product[];
+  cart: CartState;
 }

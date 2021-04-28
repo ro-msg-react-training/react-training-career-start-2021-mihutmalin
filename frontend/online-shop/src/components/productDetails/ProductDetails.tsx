@@ -8,7 +8,9 @@ import {
   getProductById,
   updateProductById,
 } from "../../services/ProductService";
-import { Product } from "../../interfaces/ProductInterface";
+import { Product } from "../../model/ProductInterface";
+import { putProductCartRequest } from "../../actions/CartActions";
+import { useDispatch } from "react-redux";
 
 interface ProductDetailsProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -43,6 +45,8 @@ export const ProductDetails = (props: ProductDetailsProps) => {
 
   const id = (props as any).match.params.number;
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getProductById(id).then((response) => {
       setProduct(response.data);
@@ -57,7 +61,9 @@ export const ProductDetails = (props: ProductDetailsProps) => {
     setIsOnUpdate(true);
   };
 
-  const onButtonAddToCart = () => (event: React.MouseEvent<unknown>) => {};
+  const onButtonAddToCart = () => (event: React.MouseEvent<unknown>) => {
+    dispatch(putProductCartRequest(id));
+  };
 
   const onButtonSave = () => (event: React.MouseEvent<unknown>) => {
     const newProduct: Product = {

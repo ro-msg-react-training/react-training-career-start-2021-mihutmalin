@@ -18,7 +18,6 @@ import { NotFound } from "./components/notFound/NotFound";
 import { Cart } from "./components/cart/Cart";
 
 export const App = () => {
-  console.log(store.getState());
   return (
     <ThemeProvider theme={standardTheme}>
       <CssBaseline>

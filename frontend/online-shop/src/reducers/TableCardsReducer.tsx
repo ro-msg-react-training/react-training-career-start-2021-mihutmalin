@@ -2,7 +2,7 @@ import {
   TableCardsActions,
   TableCardsActionsEnum,
 } from "../actions/TableCardsActions";
-import { Product } from "../interfaces/ProductInterface";
+import { Product } from "../model/ProductInterface";
 import { getAllProducts } from "../services/ProductService";
 
 export interface TableCardsState {
