@@ -1,15 +1,15 @@
 import { DescriptionCard } from "./DescriptionCard";
-import { useStyle } from "../../styles/productsList/TableCards";
+import { useStyle } from "../../styles/productCards/ProductCards.style";
 import { GridList, GridListTile } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Product } from "../../model/ProductInterface";
 import {
   getAllProductsRequest,
   getAllProductsSuccess,
-} from "../../actions/TableCardsActions";
+} from "../../actions/ProductCardsActions";
 import { AppState, store } from "../../store/Store";
 import { Dispatch } from "redux";
 
@@ -28,8 +28,12 @@ export const TableCards = (props: TableCardsProps) => {
 
   useEffect(() => {
     setWidth(window.innerWidth);
-    dispatch(getAllProductsRequest());
+    //dispatch(getAllProductsRequest());
   }, []);
+
+  useEffect(() => {
+    dispatch(getAllProductsRequest());
+  }, [store.getState().products.products]);
 
   useEffect(() => {
     function handleResize() {
@@ -44,7 +48,7 @@ export const TableCards = (props: TableCardsProps) => {
   }, [width]);
 
   let tableItems: {} | null | undefined = [];
-  if (store.getState().products.products != undefined) {
+  if (store.getState().products.products !== undefined) {
     tableItems = store.getState().products.products.map((product: Product) => (
       <GridListTile key={product.id.toString()} className={style.tile}>
         <img src={product.imageUrl} alt={product.name} />

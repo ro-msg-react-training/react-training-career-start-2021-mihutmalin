@@ -1,4 +1,4 @@
-import { useStyle } from "../../styles/notFound/NotFoundStyle";
+import { useStyle } from "../../styles/notFound/NotFound.style";
 
 interface NotFoundProps {}
 

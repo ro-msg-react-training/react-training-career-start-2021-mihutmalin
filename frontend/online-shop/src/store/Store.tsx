@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { TableCardsState } from "../reducers/TableCardsReducer";
+import { ProductCardsState } from "../reducers/ProductCardsReducer";
 import RootReducer from "../reducers/RootReducer";
 import { CartState } from "../reducers/CartReducer";
 import RootSaga from "../sagas/RootSaga";
@@ -23,6 +23,6 @@ export const store = createStore(
 sagaMiddleware.run(RootSaga);
 
 export interface AppState {
-  products: TableCardsState;
+  products: ProductCardsState;
   cart: CartState;
 }

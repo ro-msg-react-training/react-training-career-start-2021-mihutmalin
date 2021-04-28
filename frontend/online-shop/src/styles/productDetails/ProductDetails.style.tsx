@@ -9,6 +9,7 @@ export const useStyle = makeStyles((theme: Theme) =>
       width: "100%",
     },
     link: {
+      textDecoration: "none",
       color: "black",
     },
     imgContainer: {

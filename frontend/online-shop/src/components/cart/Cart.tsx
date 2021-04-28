@@ -2,7 +2,7 @@ import { Button } from "@material-ui/core";
 import React from "react";
 import { Product } from "../../model/ProductInterface";
 import { store } from "../../store/Store";
-import { useStyle } from "../../styles/cart/CartStyle";
+import { useStyle } from "../../styles/cart/Cart.style";
 
 interface CartProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -24,6 +24,13 @@ export const Cart = (props: CartProps) => {
   return (
     <div className={style.root}>
       <table className={style.table}>
+        <thead>
+          <tr>
+            <th className={style.th}>Name</th>
+            <th className={style.th}>Category</th>
+            <th className={style.th}>Price</th>
+          </tr>
+        </thead>
         <tbody>{tableItems}</tbody>
       </table>
       <div className={style.divCheckout}>

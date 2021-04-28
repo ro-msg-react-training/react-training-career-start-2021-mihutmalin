@@ -1,12 +1,12 @@
 import { Product } from "../model/ProductInterface";
 
-export enum TableCardsActionsEnum {
+export enum ProductCardsActionsEnum {
   GET_ALL_PRODUCTS_REQUEST = "GET_ALL_PRODUCTS_REQUEST",
   GET_ALL_PRODUCTS_SUCCESS = "GET_ALL_PRODUCTS_SUCCESS",
   GET_ALL_PRODUCTS_ERROR = "GET_ALL_PRODUCTS_ERROR",
 }
 
-export interface TableCardsActions {
+export interface ProductCardsActions {
   type: string;
   payload: Product[];
 }

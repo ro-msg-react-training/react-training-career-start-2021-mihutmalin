@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import { CartReducer } from "./CartReducer";
-import { TableCardsReducer } from "./TableCardsReducer";
+import { ProductCardsReducer } from "./ProductCardsReducer";
 
 export default combineReducers({
-  products: TableCardsReducer,
+  products: ProductCardsReducer,
   cart: CartReducer,
 });

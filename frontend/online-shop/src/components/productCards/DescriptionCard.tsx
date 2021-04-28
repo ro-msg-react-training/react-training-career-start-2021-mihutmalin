@@ -1,7 +1,5 @@
 import { Button, GridListTileBar } from "@material-ui/core";
-import { useStyle } from "../../styles/productsList/DescriptionCardStyle";
-import { ThemeProvider } from "@material-ui/styles";
-import { standardTheme } from "../../themes/StandardTheme";
+import { useStyle } from "../../styles/productCards/DescriptionCard.style";
 import { Link } from "react-router-dom";
 import { Product } from "../../model/ProductInterface";
 
@@ -23,7 +21,7 @@ export const DescriptionCard = (props: DescriptionCardProps) => {
       actionIcon={
         <Link
           to={{
-            pathname: `/product/${props.product.id}`,
+            pathname: `/products/${props.product.id}`,
           }}
         >
           <Button className={style.buttonStyle}>Details</Button>

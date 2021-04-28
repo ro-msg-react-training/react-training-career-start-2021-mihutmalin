@@ -1,4 +1,4 @@
-import { useStyle } from "../../styles/productDetails/ProductDetailsStyle";
+import { useStyle } from "../../styles/productDetails/ProductDetails.style";
 import { Button, Grid, IconButton, TextField } from "@material-ui/core";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import React, { useEffect, useState } from "react";
@@ -43,7 +43,7 @@ export const ProductDetails = (props: ProductDetailsProps) => {
   const [newPrice, setNewPrice] = useState(product.price);
   const [newWeight, setNewWeight] = useState(product.weight);
 
-  const id = (props as any).match.params.number;
+  const id = (props as any).match.params.id;
 
   const dispatch = useDispatch();
 
@@ -51,7 +51,7 @@ export const ProductDetails = (props: ProductDetailsProps) => {
     getProductById(id).then((response) => {
       setProduct(response.data);
     });
-  }, []);
+  });
 
   const onButtonDelete = () => (event: React.MouseEvent<unknown>) => {
     deleteProduct(id);
@@ -63,6 +63,10 @@ export const ProductDetails = (props: ProductDetailsProps) => {
 
   const onButtonAddToCart = () => (event: React.MouseEvent<unknown>) => {
     dispatch(putProductCartRequest(id));
+  };
+
+  const onButtonCancel = () => (event: React.MouseEvent<unknown>) => {
+    setIsOnUpdate(false);
   };
 
   const onButtonSave = () => (event: React.MouseEvent<unknown>) => {
@@ -187,30 +191,43 @@ export const ProductDetails = (props: ProductDetailsProps) => {
             </Grid>
             <Grid item xs={3}>
               <div className={style.div}>
-                <Link to="/cart" className={style.link}>
-                  <IconButton
-                    onClick={onButtonAddToCart()}
-                    className={style.button}
-                    aria-label="chart"
-                    component="span"
-                  >
-                    <ShoppingCart className={style.buttonIcon} />
-                  </IconButton>
-                </Link>
+                <IconButton
+                  onClick={onButtonAddToCart()}
+                  className={style.button}
+                  aria-label="chart"
+                  component="span"
+                >
+                  <ShoppingCart className={style.buttonIcon} />
+                </IconButton>
               </div>
             </Grid>
             <Grid item xs={3}></Grid>
           </Grid>
         )}
         {isOnUpdate && (
-          <Grid className={style.grid}>
-            <div className={style.div}>
-              <Link to="/products" className={style.link}>
-                <Button className={style.updateButton} onClick={onButtonSave()}>
-                  SAVE
+          <Grid container>
+            <Grid item xs={6} className={style.grid}>
+              <div className={style.div}>
+                <Link to="/products" className={style.link}>
+                  <Button
+                    className={style.updateButton}
+                    onClick={onButtonSave()}
+                  >
+                    SAVE
+                  </Button>
+                </Link>
+              </div>
+            </Grid>
+            <Grid item xs={6} className={style.grid}>
+              <div className={style.div}>
+                <Button
+                  className={style.deleteButton}
+                  onClick={onButtonCancel()}
+                >
+                  CANCEL
                 </Button>
-              </Link>
-            </div>
+              </div>
+            </Grid>
           </Grid>
         )}
       </Grid>

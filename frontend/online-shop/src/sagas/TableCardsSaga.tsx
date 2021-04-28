@@ -1,11 +1,9 @@
 import { takeEvery, put, call } from "redux-saga/effects";
 import {
   getAllProductsError,
-  getAllProductsRequest,
   getAllProductsSuccess,
-  TableCardsActions,
-  TableCardsActionsEnum,
-} from "../actions/TableCardsActions";
+  ProductCardsActionsEnum,
+} from "../actions/ProductCardsActions";
 import { Product } from "../model/ProductInterface";
 import { getAllProducts } from "../services/ProductService";
 
@@ -20,7 +18,7 @@ function* getAllProductsAsync() {
 
 export function* watchGetAllProductsAsync() {
   yield takeEvery(
-    TableCardsActionsEnum.GET_ALL_PRODUCTS_REQUEST,
+    ProductCardsActionsEnum.GET_ALL_PRODUCTS_REQUEST,
     getAllProductsAsync
   );
 }

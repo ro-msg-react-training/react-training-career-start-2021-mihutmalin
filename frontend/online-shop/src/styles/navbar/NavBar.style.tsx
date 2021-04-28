@@ -12,8 +12,16 @@ export const useStyle = makeStyles((theme: Theme) =>
     buttonCart: {
       float: "right",
     },
+    buttonProducts: {
+      marginRight: "auto",
+      marginLeft: "auto",
+    },
     link: {
+      textDecoration: "none",
       color: "black",
+    },
+    div: {
+      textAlign: "center",
     },
   })
 );
