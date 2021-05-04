@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { TableCards } from "./components/productCards/ProductCards";
+import { ProductDetails } from "./components/productDetails/ProductDetails";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { ThemeProvider } from "@material-ui/styles";
+import { standardTheme } from "./themes/CustomTheme";
+import { CssBaseline } from "@material-ui/core";
+import React from "react";
+import { NavBar } from "./components/navbar/NavBar";
+import { Provider } from "react-redux";
+import { store } from "./store/Store";
+import { NotFound } from "./components/notFound/NotFound";
+import { Cart } from "./components/cart/Cart";
+import { FirstPage } from "./components/firstPage/FirstPage";
+import { Checkout } from "./components/checkout/Checkout";
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={standardTheme}>
+      <CssBaseline>
+        <Provider store={store}>
+          <Router>
+            <NavBar></NavBar>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/home" />
+              </Route>
+              <Route path="/home" component={FirstPage}></Route>
+              <Route path="/products/:id" component={ProductDetails}></Route>
+              <Route path="/products" component={TableCards}></Route>
+              <Route path="/cart" component={Cart}></Route>
+              <Route path="/checkout" component={Checkout}></Route>
+              <Route path="/*" component={NotFound}></Route>
+            </Switch>
+          </Router>
+        </Provider>
+      </CssBaseline>
+    </ThemeProvider>
   );
-}
-
-export default App;
+};
