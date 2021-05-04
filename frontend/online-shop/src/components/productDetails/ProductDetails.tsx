@@ -8,7 +8,7 @@ import {
   getProductById,
   updateProductById,
 } from "../../services/ProductService";
-import { Product } from "../../model/ProductInterface";
+import { Product } from "../../model/Product";
 import { putProductCartRequest } from "../../actions/CartActions";
 import { useDispatch } from "react-redux";
 

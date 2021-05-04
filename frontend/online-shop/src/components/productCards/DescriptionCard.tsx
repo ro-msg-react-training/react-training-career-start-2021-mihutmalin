@@ -1,7 +1,7 @@
 import { Button, GridListTileBar } from "@material-ui/core";
 import { useStyle } from "../../styles/productCards/DescriptionCard.style";
 import { Link } from "react-router-dom";
-import { Product } from "../../model/ProductInterface";
+import { Product } from "../../model/Product";
 
 interface DescriptionCardProps {
   product: Product;

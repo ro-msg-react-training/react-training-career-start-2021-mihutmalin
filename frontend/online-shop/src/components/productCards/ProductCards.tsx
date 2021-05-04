@@ -4,8 +4,8 @@ import { GridList, GridListTile } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import { useState } from "react";
 import { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
-import { Product } from "../../model/ProductInterface";
+import { connect } from "react-redux";
+import { Product } from "../../model/Product";
 import {
   getAllProductsRequest,
   getAllProductsSuccess,
@@ -15,8 +15,7 @@ import { Dispatch } from "redux";
 
 interface TableCardsProps {
   products: Product[];
-  //getAllProd: () => void;
-  //getAllProdSuccess: (products: Product[]) => void;
+  isLoading: boolean;
 }
 
 export const TableCards = (props: TableCardsProps) => {
@@ -24,16 +23,10 @@ export const TableCards = (props: TableCardsProps) => {
 
   const [width, setWidth] = useState(window.innerWidth);
   const [columns, setColumns] = useState(4);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setWidth(window.innerWidth);
-    //dispatch(getAllProductsRequest());
   }, []);
-
-  useEffect(() => {
-    dispatch(getAllProductsRequest());
-  }, [store.getState().products.products]);
 
   useEffect(() => {
     function handleResize() {
@@ -74,6 +67,7 @@ export const TableCards = (props: TableCardsProps) => {
 function mapStateToProps(state: AppState) {
   return {
     products: state.products.products,
+    isLoading: state.products.isLoading,
   };
 }
 

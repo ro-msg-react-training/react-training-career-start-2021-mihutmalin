@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import React from "react";
-import { Product } from "../../model/ProductInterface";
+import { Link } from "react-router-dom";
+import { Product } from "../../model/Product";
 import { store } from "../../store/Store";
 import { useStyle } from "../../styles/cart/Cart.style";
 
@@ -34,9 +35,11 @@ export const Cart = (props: CartProps) => {
         <tbody>{tableItems}</tbody>
       </table>
       <div className={style.divCheckout}>
-        <Button className={style.buttonCheckout} onClick={onButtonUpdate()}>
-          Checkout
-        </Button>
+        <Link to="/checkout" className={style.link}>
+          <Button className={style.buttonCheckout} onClick={onButtonUpdate()}>
+            Checkout
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ import { store } from "./store/Store";
 import { NotFound } from "./components/notFound/NotFound";
 import { Cart } from "./components/cart/Cart";
 import { FirstPage } from "./components/firstPage/FirstPage";
+import { Checkout } from "./components/checkout/Checkout";
 
 export const App = () => {
   return (
@@ -33,6 +34,7 @@ export const App = () => {
               <Route path="/products/:id" component={ProductDetails}></Route>
               <Route path="/products" component={TableCards}></Route>
               <Route path="/cart" component={Cart}></Route>
+              <Route path="/checkout" component={Checkout}></Route>
               <Route path="/*" component={NotFound}></Route>
             </Switch>
           </Router>

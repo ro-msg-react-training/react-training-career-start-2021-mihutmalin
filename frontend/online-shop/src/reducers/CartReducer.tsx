@@ -1,5 +1,5 @@
 import { CartActions, CartActionsEnum } from "../actions/CartActions";
-import { Product } from "../model/ProductInterface";
+import { Product } from "../model/Product";
 
 export interface CartState {
   cart: Product[];

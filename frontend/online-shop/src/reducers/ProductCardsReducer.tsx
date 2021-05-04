@@ -2,7 +2,7 @@ import {
   ProductCardsActions,
   ProductCardsActionsEnum,
 } from "../actions/ProductCardsActions";
-import { Product } from "../model/ProductInterface";
+import { Product } from "../model/Product";
 
 export interface ProductCardsState {
   products: Product[];

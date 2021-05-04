@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Product } from "../model/ProductInterface";
+import { Product } from "../model/Product";
 
 export const getAllProducts = async () => {
   const result: Product[] = await axios

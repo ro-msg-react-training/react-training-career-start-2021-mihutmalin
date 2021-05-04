@@ -5,7 +5,7 @@ import {
   putProductCartError,
   putProductCartSuccess,
 } from "../actions/CartActions";
-import { Product } from "../model/ProductInterface";
+import { Product } from "../model/Product";
 import { getProductById } from "../services/ProductService";
 
 function* putProductCartAsync(action: CartActions) {

@@ -4,7 +4,7 @@ import {
   getAllProductsSuccess,
   ProductCardsActionsEnum,
 } from "../actions/ProductCardsActions";
-import { Product } from "../model/ProductInterface";
+import { Product } from "../model/Product";
 import { getAllProducts } from "../services/ProductService";
 
 function* getAllProductsAsync() {

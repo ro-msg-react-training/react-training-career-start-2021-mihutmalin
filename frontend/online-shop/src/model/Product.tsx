@@ -1,5 +1,5 @@
-import { Category } from "./CategoryInterface";
-import { Supplier } from "./SupplierInterface";
+import { Category } from "./Category";
+import { Supplier } from "./Supplier";
 
 export interface Product {
   id: bigint;

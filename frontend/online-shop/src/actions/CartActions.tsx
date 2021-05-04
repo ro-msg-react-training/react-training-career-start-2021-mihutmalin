@@ -1,4 +1,4 @@
-import { Product } from "../model/ProductInterface";
+import { Product } from "../model/Product";
 
 export enum CartActionsEnum {
   PUT_PROD_CART_REQUEST = "PUT_PROD_CART_REQUEST",

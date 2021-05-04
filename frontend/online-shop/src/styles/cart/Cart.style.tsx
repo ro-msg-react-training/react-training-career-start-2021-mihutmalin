@@ -6,7 +6,6 @@ export const useStyle = makeStyles((theme: Theme) =>
       textAlign: "center",
       fontSize: "30px",
       height: "90vh",
-      overflow: "hidden",
     },
     table: {
       marginTop: "5%",
@@ -32,6 +31,10 @@ export const useStyle = makeStyles((theme: Theme) =>
     buttonCheckout: {
       backgroundColor: "black",
       color: "white",
+    },
+    link: {
+      textDecoration: "none",
+      color: "black",
     },
   })
 );

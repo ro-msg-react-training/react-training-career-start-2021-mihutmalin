@@ -1,4 +1,4 @@
-import { Product } from "../model/ProductInterface";
+import { Product } from "../model/Product";
 
 export enum ProductCardsActionsEnum {
   GET_ALL_PRODUCTS_REQUEST = "GET_ALL_PRODUCTS_REQUEST",
