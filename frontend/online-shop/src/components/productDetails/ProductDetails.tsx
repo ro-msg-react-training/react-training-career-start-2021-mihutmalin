@@ -19,19 +19,19 @@ interface ProductDetailsProps {
 export const ProductDetails = (props: ProductDetailsProps) => {
   const style = useStyle();
 
-  const [product, setProduct] = useState({
-    id: BigInt(0),
+  const [product, setProduct] = useState<Product>({
+    id: 0,
     name: "",
     description: "",
     price: 0,
     weight: 0,
     productCategory: {
-      id: BigInt(0),
+      id: 0,
       name: "",
       description: "",
     },
     supplier: {
-      id: BigInt(0),
+      id: 0,
       name: "",
     },
     imageUrl: "",
@@ -93,96 +93,86 @@ export const ProductDetails = (props: ProductDetailsProps) => {
   return (
     <Grid container className={style.root}>
       <Grid className={style.info} item xs={6}>
-        <Grid className={style.grid} item xs={12}>
-          <div className={style.div}>
-            {!isOnUpdate && <div>{product.name}</div>}
-            {isOnUpdate && (
-              <TextField
-                onChange={(event) => {
-                  setNewName(event.target.value);
-                  setNewPrice(newPrice);
-                  setNewWeight(newWeight);
-                }}
-                label="name"
-                defaultValue={product.name}
-                InputProps={{
-                  style: { color: "white" },
-                  readOnly: !isOnUpdate,
-                }}
-              />
-            )}
-          </div>
-        </Grid>
-        <Grid className={style.grid} item xs={12}>
-          <div className={style.div}>
-            {!isOnUpdate && <div>{product.productCategory.name}</div>}
-            {isOnUpdate && (
-              <TextField
-                label="category"
-                defaultValue={product.productCategory.name}
-                InputProps={{
-                  style: { color: "white" },
-                  readOnly: true,
-                }}
-              />
-            )}
-          </div>
-        </Grid>
-        <Grid className={style.grid} item xs={12}>
-          <div className={style.div}>
-            {!isOnUpdate && <div>{product.price}</div>}
-            {isOnUpdate && (
-              <TextField
-                onChange={(event) => {
-                  setNewName(newName);
-                  setNewPrice(parseFloat(event.target.value));
-                  setNewWeight(newWeight);
-                }}
-                label="price ($)"
-                defaultValue={product.price}
-                InputProps={{
-                  style: { color: "white" },
-                  readOnly: !isOnUpdate,
-                }}
-              />
-            )}
-          </div>
-        </Grid>
-        <Grid className={style.grid} item xs={12}>
-          <div className={style.div}>
-            {!isOnUpdate && <div>{product.weight}</div>}
-            {isOnUpdate && (
-              <TextField
-                onChange={(event) => {
-                  setNewName(newName);
-                  setNewPrice(newPrice);
-                  setNewWeight(parseFloat(event.target.value));
-                }}
-                label="weight (kg)"
-                defaultValue={product.weight}
-                InputProps={{
-                  style: { color: "white" },
-                  readOnly: !isOnUpdate,
-                }}
-              />
-            )}
-          </div>
-        </Grid>
-        <Grid className={style.grid} item xs={12}>
-          <div className={style.div}>
-            {!isOnUpdate && <div>{product.supplier.name}</div>}
-            {isOnUpdate && (
-              <TextField
-                label="supplier"
-                defaultValue={product.supplier.name}
-                InputProps={{
-                  style: { color: "white" },
-                  readOnly: true,
-                }}
-              />
-            )}
-          </div>
-        </Grid>
+        <div className={style.div}>
+          {!isOnUpdate && <div>{product.name}</div>}
+          {isOnUpdate && (
+            <TextField
+              onChange={(event) => {
+                setNewName(event.target.value);
+                setNewPrice(newPrice);
+                setNewWeight(newWeight);
+              }}
+              label="name"
+              defaultValue={product.name}
+              InputProps={{
+                style: { color: "white" },
+                readOnly: !isOnUpdate,
+              }}
+            />
+          )}
+        </div>
+        <div className={style.div}>
+          {!isOnUpdate && <div>{product.productCategory.name}</div>}
+          {isOnUpdate && (
+            <TextField
+              label="category"
+              defaultValue={product.productCategory.name}
+              InputProps={{
+                style: { color: "white" },
+                readOnly: true,
+              }}
+            />
+          )}
+        </div>
+        <div className={style.div}>
+          {!isOnUpdate && <div>{product.price}</div>}
+          {isOnUpdate && (
+            <TextField
+              onChange={(event) => {
+                setNewName(newName);
+                setNewPrice(parseFloat(event.target.value));
+                setNewWeight(newWeight);
+              }}
+              label="price ($)"
+              defaultValue={product.price}
+              InputProps={{
+                style: { color: "white" },
+                readOnly: !isOnUpdate,
+              }}
+            />
+          )}
+        </div>
+        <div className={style.div}>
+          {!isOnUpdate && <div>{product.weight}</div>}
+          {isOnUpdate && (
+            <TextField
+              onChange={(event) => {
+                setNewName(newName);
+                setNewPrice(newPrice);
+                setNewWeight(parseFloat(event.target.value));
+              }}
+              label="weight (kg)"
+              defaultValue={product.weight}
+              InputProps={{
+                style: { color: "white" },
+                readOnly: !isOnUpdate,
+              }}
+            />
+          )}
+        </div>
+        <div className={style.div}>
+          {!isOnUpdate && <div>{product.supplier.name}</div>}
+          {isOnUpdate && (
+            <TextField
+              label="supplier"
+              defaultValue={product.supplier.name}
+              InputProps={{
+                style: { color: "white" },
+                readOnly: true,
+              }}
+            />
+          )}
+        </div>
         {!isOnUpdate && (
           <Grid className={style.grid} container>
             <Grid item xs={3}></Grid>

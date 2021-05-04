@@ -2,7 +2,7 @@ import { Category } from "./Category";
 import { Supplier } from "./Supplier";
 
 export interface Product {
-  id: bigint;
+  id: number;
   name: string;
   description: string;
   price: number;

@@ -1,5 +1,5 @@
 export interface AddressDTO {
-  id: bigint;
+  id: number;
   country: string;
   city: string;
   county: string;

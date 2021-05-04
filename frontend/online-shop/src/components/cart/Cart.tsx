@@ -12,8 +12,6 @@ interface CartProps {
 export const Cart = (props: CartProps) => {
   const style = useStyle();
 
-  const onButtonUpdate = () => (event: React.MouseEvent<unknown>) => {};
-
   const tableItems = store.getState().cart.cart.map((product: Product) => (
     <tr key={product.id.toString()}>
       <td className={style.td}>{product.name}</td>
@@ -36,9 +34,7 @@ export const Cart = (props: CartProps) => {
       </table>
       <div className={style.divCheckout}>
         <Link to="/checkout" className={style.link}>
-          <Button className={style.buttonCheckout} onClick={onButtonUpdate()}>
-            Checkout
-          </Button>
+          <Button className={style.buttonCheckout}>Checkout</Button>
         </Link>
       </div>
     </div>

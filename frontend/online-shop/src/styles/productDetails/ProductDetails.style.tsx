@@ -24,6 +24,7 @@ export const useStyle = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.primary.dark,
     },
     div: {
+      backgroundColor: theme.palette.primary.dark,
       color: "white",
       fontSize: "25px",
       margin: "0 auto",

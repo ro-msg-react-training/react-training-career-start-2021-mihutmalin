@@ -14,11 +14,13 @@ interface CheckoutProps {
 
 export const Checkout = (props: CheckoutProps) => {
   const style = useStyle();
+
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
 
+  //Mocked data
   const address: AddressDTO = {
-    id: BigInt(1),
+    id: 1,
     country: "Romania",
     city: "Cluj-Napoca",
     county: "Cluj",
@@ -34,7 +36,7 @@ export const Checkout = (props: CheckoutProps) => {
     createDate: new Date(),
     addressDTO: address,
     products: productsArr,
-    customerId: BigInt(1),
+    customerId: 1,
   };
 
   const onButtonPlaceOrder = () => (event: React.MouseEvent<unknown>) => {
@@ -43,7 +45,6 @@ export const Checkout = (props: CheckoutProps) => {
       setSuccess(true);
       setFail(false);
     } catch (e) {
-      console.log(e);
       setFail(true);
       setSuccess(false);
     }

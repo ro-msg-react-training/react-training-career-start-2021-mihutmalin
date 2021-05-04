@@ -1,4 +1,4 @@
 export interface ProductIdAndQuantityDTO {
-  productId: bigint;
+  productId: number;
   quantity: number;
 }

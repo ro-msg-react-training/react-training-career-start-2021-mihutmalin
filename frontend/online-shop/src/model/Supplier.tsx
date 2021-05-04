@@ -1,4 +1,4 @@
 export interface Supplier {
-  id: bigint;
+  id: number;
   name: string;
 }
